@@ -1,0 +1,29 @@
+:root {
+  --bg: #f2f1ee;
+  --surface: #e7e5e0;
+  --fg: #111111;
+  --muted: #7a766f;
+  --line: rgba(17, 17, 17, 0.12);
+  --inverse-bg: #111111;
+  --inverse-fg: #f2f1ee;
+
+  --tone-stone: #b9b4ab;
+  --tone-fog: #cfd0cc;
+  --tone-night: #2b2c2e;
+  --tone-sand: #cdbfa8;
+  --tone-olive: #7f8270;
+  --tone-mono: #8c8c8c;
+
+  --font: 'Inter', system-ui, sans-serif;
+  --fs-display-xl: clamp(56px, 11.1vw, 160px);
+  --fs-display-l: clamp(44px, 6.1vw, 88px);
+  --fs-display-m: clamp(32px, 3.4vw, 48px);
+  --fs-heading: clamp(24px, 2vw, 28px);
+  --fs-body-l: clamp(17px, 1.4vw, 20px);
+  --fs-body: 15px;
+  --fs-small: 12px;
+
+  --margin: clamp(16px, 2.8vw, 40px);
+  --gutter: clamp(12px, 1.4vw, 20px);
+  --nav-h: 72px;
+}

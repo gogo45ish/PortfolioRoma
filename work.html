@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Работы — Роман Сулейманов</title>
+    <meta name="description" content="Все проекты фотографа Романа Сулейманова: портрет, документ, коммерция." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='14' fill='%23F2F1EE' text-anchor='middle'%3EРС%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <script>document.documentElement.classList.add('js');</script>
+    <!-- render-blocking: nav, footer and data-driven content exist before first paint -->
+    <script type="module" src="/src/js/main.js" blocking="render"></script>
+  </head>
+  <body data-page="work">
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <main>
+          <section class="work container" data-work>
+            <header class="page-head page-head--count">
+              <h1 class="t-display-xl" data-split="load">Работы</h1>
+              <sup class="count t-heading muted" data-count></sup>
+            </header>
+            <div class="toolbar">
+              <div class="toolbar__group" data-filters role="group" aria-label="Категория"></div>
+              <div class="toolbar__group" role="group" aria-label="Вид">
+                <button class="chip" data-view="grid" aria-pressed="true">Сетка</button>
+                <button class="chip" data-view="list" aria-pressed="false">Список</button>
+              </div>
+            </div>
+            <div class="work-grid"></div>
+            <ul class="index-list" hidden></ul>
+          </section>
+          <div class="section"></div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

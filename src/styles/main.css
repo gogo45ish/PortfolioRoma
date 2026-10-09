@@ -1,0 +1,3 @@
+/* Stylesheet entry — linked from each page's <head> so it's render-blocking (no flash of unstyled content). */
+@import './base.css';
+@import './pages.css';
