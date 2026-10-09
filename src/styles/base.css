@@ -103,15 +103,24 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .nav.is-solid { background-color: var(--bg); border-bottom-color: var(--line); }
 .nav.is-hidden { transform: translateY(-100%); }
 .menu-open .nav { transform: none; background-color: transparent; border-bottom-color: transparent; }
-.nav__brand { font-weight: 500; letter-spacing: -0.01em; }
 .nav__links { display: flex; gap: 32px; }
 .nav__links .link { color: var(--muted); }
 .nav__links .link[aria-current='page'] { color: var(--accent); }
 /* Over photos (before the bar turns solid) grey links lose contrast; use full ink */
 .nav:not(.is-solid) .nav__links .link:not([aria-current]) { color: var(--fg); }
-.nav__toggle { display: none; }
-/* 44px tap targets without moving the text: pad the hit area, pull the box back with a matching negative margin */
-.nav__brand, .nav__toggle { padding: 11px 12px; margin: -11px -12px; }
+/* 44px tap target around a 24×10 icon; the negative margin keeps the icon aligned to the page margin */
+.nav__toggle { display: none; padding: 17px 10px; margin: -17px -10px; color: inherit; }
+/* Two lines that cross into an X while the menu is open */
+.nav__burger { position: relative; display: block; width: 24px; height: 10px; }
+.nav__burger::before, .nav__burger::after {
+  content: ''; position: absolute; left: 0; right: 0; height: 1.5px; background: currentColor;
+  transition: transform 220ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.nav__burger::before { top: 0; }
+.nav__burger::after { bottom: 0; }
+.nav__toggle[aria-expanded='true'] .nav__burger::before { transform: translateY(4.25px) rotate(45deg); }
+.nav__toggle[aria-expanded='true'] .nav__burger::after { transform: translateY(-4.25px) rotate(-45deg); }
+@media (prefers-reduced-motion: reduce) { .nav__burger::before, .nav__burger::after { transition: none; } }
 /* Links sit at the top (not the bottom) so mobile browser toolbars can't cover them; dvh tracks the visible viewport. */
 .menu {
   position: fixed; inset: 0 0 auto; height: 100vh; height: 100dvh; z-index: 49;
@@ -128,11 +137,11 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .menu-open, .menu-open body { overflow: hidden; }
 @media (min-width: 768px) {
   .menu { display: none; }
-  /* Desktop and tablet: no wordmark (the hero carries the name); links centred, with Главная as the way home */
+  /* No wordmark (the hero carries the name); links centred, with Главная as the way home */
   .nav { justify-content: center; }
-  .nav__brand { display: none; }
 }
 @media (max-width: 767px) {
+  .nav { justify-content: flex-end; }
   .nav__links { display: none; }
   .nav__toggle { display: block; }
 }

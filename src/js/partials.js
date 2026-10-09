@@ -16,12 +16,11 @@ export function renderNav(page) {
   document.body.insertAdjacentHTML(
     'afterbegin',
     `<header class="nav">
-      <a class="nav__brand" href="./">Роман Сулейманов</a>
       <nav class="nav__links" aria-label="Основная навигация">
         <a class="link" href="./"${current('home')}>Главная</a>
         ${links.map(([key, label, href]) => `<a class="link" href="${href}"${current(key)}>${label}</a>`).join('')}
       </nav>
-      <button class="nav__toggle" aria-expanded="false" aria-controls="menu">Меню</button>
+      <button class="nav__toggle" aria-expanded="false" aria-controls="menu" aria-label="Открыть меню"><span class="nav__burger" aria-hidden="true"></span></button>
     </header>
     <div class="menu" id="menu" aria-hidden="true">
       <nav class="menu__list" aria-label="Меню">
@@ -59,7 +58,7 @@ export function renderNav(page) {
   const setOpen = (open, instant = false) => {
     const reduce = instant || matchMedia('(prefers-reduced-motion: reduce)').matches;
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.textContent = open ? 'Закрыть' : 'Меню';
+    toggle.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
     menu.setAttribute('aria-hidden', String(!open));
     document.documentElement.classList.toggle('menu-open', open);
     ScrollSmoother.get()?.paused(open);
