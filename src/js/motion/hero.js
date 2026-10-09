@@ -37,6 +37,6 @@ export function hero({ desktop, reduce }) {
         ease: 'power1.in',
       },
     )
-    .to('.hero__title', { yPercent: -40, opacity: 0, ease: 'none', duration: 0.5 }, 0)
-    .to('.hero__meta', { opacity: 0, ease: 'none', duration: 0.3 }, 0);
+    .to('.hero__title', { yPercent: -30, ease: 'none', duration: 0.5 }, 0)
+    .to('.hero__overlay', { opacity: 0, ease: 'none', duration: 0.5 }, 0); // name, meta and their ink fade leave together
 }

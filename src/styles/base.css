@@ -107,6 +107,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .nav__links { display: flex; gap: 32px; }
 .nav__links .link { color: var(--muted); }
 .nav__links .link[aria-current='page'] { color: var(--accent); }
+/* Over photos (before the bar turns solid) grey links lose contrast; use full ink */
+.nav:not(.is-solid) .nav__links .link:not([aria-current]) { color: var(--fg); }
 .nav__toggle { display: none; }
 /* 44px tap targets without moving the text: pad the hit area, pull the box back with a matching negative margin */
 .nav__brand, .nav__toggle { padding: 11px 12px; margin: -11px -12px; }
