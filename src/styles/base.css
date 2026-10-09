@@ -126,7 +126,12 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .menu__list a[aria-current='page'] { font-family: var(--font-serif); font-style: italic; letter-spacing: -0.01em; font-size: clamp(46px, 13.5vw, 72px); color: var(--accent); }
 .menu__email { color: var(--muted); } /* colour, not opacity: the open animation sets opacity */
 .menu-open, .menu-open body { overflow: hidden; }
-@media (min-width: 768px) { .menu { display: none; } }
+@media (min-width: 768px) {
+  .menu { display: none; }
+  /* Desktop and tablet: no wordmark (the hero carries the name); links centred, with Главная as the way home */
+  .nav { justify-content: center; }
+  .nav__brand { display: none; }
+}
 @media (max-width: 767px) {
   .nav__links { display: none; }
   .nav__toggle { display: block; }

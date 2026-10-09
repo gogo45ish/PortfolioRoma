@@ -18,6 +18,7 @@ export function renderNav(page) {
     `<header class="nav">
       <a class="nav__brand" href="./">Роман Сулейманов</a>
       <nav class="nav__links" aria-label="Основная навигация">
+        <a class="link" href="./"${current('home')}>Главная</a>
         ${links.map(([key, label, href]) => `<a class="link" href="${href}"${current(key)}>${label}</a>`).join('')}
       </nav>
       <button class="nav__toggle" aria-expanded="false" aria-controls="menu">Меню</button>
