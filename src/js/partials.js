@@ -24,12 +24,28 @@ export function renderNav(page) {
     </header>
     <div class="menu" id="menu" aria-hidden="true">
       <nav class="menu__list" aria-label="Меню">
-        <a class="menu__item" href="./">Главная</a>
-        ${links.map(([, label, href]) => `<a class="menu__item" href="${href}">${label}</a>`).join('')}
+        <a class="menu__item" href="./"${page === 'home' ? ' aria-current="page"' : ''}>Главная</a>
+        ${links.map(([key, label, href]) => `<a class="menu__item" href="${href}"${current(key)}>${label}</a>`).join('')}
       </nav>
       <a class="menu__item menu__email label" href="mailto:${contacts.email}">${contacts.email}</a>
     </div>`,
   );
+
+  // Solid once the page leaves the top; hidden while scrolling down, back on the first scroll up.
+  const nav = document.querySelector('.nav');
+  let lastY = scrollY;
+  let ticking = false;
+  const onScroll = () => {
+    const y = scrollY;
+    nav.classList.toggle('is-solid', y > 8);
+    if (Math.abs(y - lastY) > 6) nav.classList.toggle('is-hidden', y > lastY && y > innerHeight * 0.5);
+    lastY = y;
+    ticking = false;
+  };
+  addEventListener('scroll', () => ticking || (ticking = requestAnimationFrame(onScroll)), { passive: true });
+  onScroll();
+  // Keyboard users must always reach the nav
+  nav.addEventListener('focusin', () => nav.classList.remove('is-hidden'));
 
   const toggle = document.querySelector('.nav__toggle');
   const menu = document.querySelector('.menu');
@@ -62,7 +78,11 @@ export function renderNav(page) {
 
   const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
   toggle.addEventListener('click', () => setOpen(!isOpen()));
-  document.addEventListener('keydown', (e) => e.key === 'Escape' && isOpen() && setOpen(false));
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape' || !isOpen()) return;
+    setOpen(false);
+    toggle.focus(); // focus was inside the now-hidden menu
+  });
   // Coming back via the Back button restores the page from bfcache with the menu still open — reset it.
   window.addEventListener('pageshow', (e) => e.persisted && isOpen() && setOpen(false, true));
   // The overlay is mobile-only; growing past the breakpoint while it's open must also release the scroll lock.
@@ -76,7 +96,7 @@ export function renderFooter(target) {
       <p class="label muted">Есть проект?</p>
       <a class="footer__cta t-display-xl" href="mailto:${contacts.email}">
         <span class="footer__line"><span>Давайте</span></span>
-        <span class="footer__line"><span>поработаем</span></span>
+        <span class="footer__line"><span><span class="serif">поработаем</span></span></span>
       </a>
       <div class="footer__cols">
         <div><p class="label muted">Почта</p><ul><li><a class="link" href="mailto:${contacts.email}">${contacts.email}</a></li></ul></div>

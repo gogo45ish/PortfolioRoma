@@ -53,8 +53,10 @@ function project() {
 
   $('[data-project]').innerHTML = `
     <section class="project-hero container">
-      <p class="label muted">${p.index} / ${String(projects.length).padStart(2, '0')}</p>
-      <h1 class="t-display-xl" data-split="load">${p.title}</h1>
+      <header class="page-head--count">
+        <h1 class="t-display-xl" data-split="load">${p.title}</h1>
+        <sup class="count" aria-label="Проект ${Number(p.index)} из ${projects.length}">${p.index}/${String(projects.length).padStart(2, '0')}</sup>
+      </header>
       <dl class="project-meta grid">
         <div><dt class="label muted">Категория</dt><dd>${p.category}</dd></div>
         <div><dt class="label muted">Год</dt><dd>${p.year}</dd></div>
@@ -97,7 +99,7 @@ function project() {
 
 function contact() {
   $('[data-contact-email]').href = `mailto:${contacts.email}`;
-  $('[data-contact-email]').textContent = contacts.email;
+  $('[data-contact-email]').innerHTML = contacts.email.replace('@', '@<wbr>');
   $('[data-contact-list]').innerHTML = [
     ['Telegram', contacts.telegram, tgHref],
     ['Телефон', contacts.phone, telHref],

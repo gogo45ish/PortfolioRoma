@@ -1,20 +1,24 @@
 :root {
-  --bg: #f2f1ee;
-  --surface: #e7e5e0;
-  --fg: #111111;
-  --muted: #7a766f;
-  --line: rgba(17, 17, 17, 0.12);
-  --inverse-bg: #111111;
-  --inverse-fg: #f2f1ee;
+  /* Night ink: blue-black ground, warm paper-white text, one brass accent */
+  --bg: #13161b;
+  --surface: #1b1f26;
+  --deep: #0b0d10; /* footer, mobile menu, next-project band */
+  --fg: #e9e6df; /* 14.6:1 on --bg */
+  --muted: #8d8f93; /* 5.6:1 on --bg */
+  --dim: #3a3f47; /* statement words before they're read */
+  --accent: #c9a86a; /* brass, 8:1 on --bg — active and hover states only */
+  --line: rgba(233, 230, 223, 0.12);
 
-  --tone-stone: #b9b4ab;
-  --tone-fog: #cfd0cc;
-  --tone-night: #2b2c2e;
-  --tone-sand: #cdbfa8;
-  --tone-olive: #7f8270;
-  --tone-mono: #8c8c8c;
+  /* Placeholder fills behind photos while they load */
+  --tone-stone: #2c3139;
+  --tone-fog: #343a42;
+  --tone-night: #1d2128;
+  --tone-sand: #3b3832;
+  --tone-olive: #30332b;
+  --tone-mono: #2e3033;
 
   --font: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif; /* brass accent words only */
   --fs-display-xl: clamp(56px, 11.1vw, 160px);
   --fs-display-l: clamp(44px, 6.1vw, 88px);
   --fs-display-m: clamp(32px, 3.4vw, 48px);
